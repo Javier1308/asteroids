@@ -32,9 +32,17 @@ def main():
     player = Player(x, y)
 
     while True:
-        for event in pygame.event.get():
+        for event in pygame.event.get():    
             if event.type == pygame.QUIT:
                 return
+
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_SPACE]:
+            shot = player.shoot()
+            if shot != None:
+                updatable.add(shot)
+                drawable.add(shot)
 
         updatable.update(dt)
 
